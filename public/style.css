@@ -1,8 +1,12 @@
 body {
     margin: 0;
-    font-family: 'Georgia', 'Times New Roman', serif;
+    font-family: 'Montserrat', sans-serif;
     color: #0B1F3A;
     cursor: url('balanza.png'), auto;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
 }
 
 /* HEADER */
@@ -48,6 +52,7 @@ nav a {
     height: 100vh;
     background: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f');
     background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -124,6 +129,18 @@ nav a {
     text-decoration: none;
 }
 
+/* ANIMACIONES */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* MENU HAMBURGUESA */
 .menu-toggle {
     display: none;
@@ -137,12 +154,13 @@ nav a {
 
     .nav-container {
         grid-template-columns: 1fr 1fr;
+        padding: 15px 20px;
     }
 
     nav {
         display: none;
         position: absolute;
-        top: 90px;
+        top: 80px;
         right: 0;
         background: white;
         flex-direction: column;
@@ -171,5 +189,9 @@ nav a {
 
     .overlay h1 {
         font-size: 28px;
+    }
+
+    .hero {
+        height: 70vh;
     }
 }
