@@ -346,3 +346,40 @@ nav a {
     }
 
 }
+/* ===== CAJON AZUL HOME CENTRADO ===== */
+.home-contacto {
+    background: #0B1F3A;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.home-contacto .container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.home-contacto h2 {
+    margin-top: 40px;
+    font-size: 28px;
+}
+
+.home-contacto p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* MOVIL */
+@media (max-width: 768px) {
+    .home-contacto {
+        padding: 60px 20px;
+    }
+
+    .home-contacto h2 {
+        font-size: 24px;
+    }
+
+    .home-contacto p {
+        font-size: 16px;
+    }
+}
