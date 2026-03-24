@@ -23,3 +23,24 @@ function reveal() {
 }
 
 window.addEventListener("scroll", reveal);
+
+/* EFECTO CURSOR */
+document.addEventListener("mousemove", function(e) {
+    let trail = document.createElement("div");
+    trail.style.position = "absolute";
+    trail.style.left = e.pageX + "px";
+    trail.style.top = e.pageY + "px";
+    trail.style.width = "8px";
+    trail.style.height = "8px";
+    trail.style.background = "#C9A646";
+    trail.style.borderRadius = "50%";
+    trail.style.pointerEvents = "none";
+    trail.style.zIndex = "9999";
+    trail.style.opacity = "0.7";
+
+    document.body.appendChild(trail);
+
+    setTimeout(() => {
+        trail.remove();
+    }, 300);
+});
