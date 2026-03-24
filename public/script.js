@@ -24,7 +24,7 @@ function reveal() {
 
 window.addEventListener("scroll", reveal);
 
-/* EFECTO CURSOR ELEGANTE */
+/* EFECTO CURSOR */
 document.addEventListener("mousemove", function(e) {
     const trail = document.createElement("div");
     trail.style.position = "fixed";
@@ -49,4 +49,35 @@ document.addEventListener("mousemove", function(e) {
     setTimeout(() => {
         trail.remove();
     }, 500);
+});
+
+/* NUMEROS ANIMADOS */
+const counters = document.querySelectorAll('.counter');
+const speed = 200;
+
+const animateCounters = () => {
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+
+        const increment = target / speed;
+
+        if (count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(animateCounters, 20);
+        } else {
+            counter.innerText = target;
+        }
+    });
+};
+
+/* ACTIVAR CUANDO APARECE EN PANTALLA */
+window.addEventListener("scroll", function() {
+    const section = document.querySelector(".numbers");
+    const position = section.getBoundingClientRect().top;
+    const screenPosition = window.innerHeight;
+
+    if (position < screenPosition) {
+        animateCounters();
+    }
 });
