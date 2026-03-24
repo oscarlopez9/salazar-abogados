@@ -72,13 +72,37 @@
             transform: translate(-50%, -50%);
         }
     </style>
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #0B1F3A;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.logo img {
+    height: 60px;
+}
+
+nav a {
+    color: #C9A646;
+    margin: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
 </head>
 <body>
 
 <div class="cursor"></div>
 
-<header>
-    <h1>Salazar & Abogados Asociados</h1>
+<header class="header">
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
+
     <nav>
         <a href="#inicio">Inicio</a>
         <a href="#nosotros">Nosotros</a>
