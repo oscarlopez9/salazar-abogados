@@ -1,6 +1,7 @@
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #0B1F3A;
     cursor: url('balanza.png'), auto;
 }
 
@@ -8,32 +9,38 @@ body {
 .header {
     width: 100%;
     background: white;
-    box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
     position: fixed;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid #eee;
 }
 
 .nav-container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
-    padding: 15px 40px;
+    padding: 20px 60px;
 }
 
 .logo {
     height: 60px;
 }
 
+.logo-container {
+    justify-self: start;
+}
+
 nav {
+    justify-self: center;
     display: flex;
-    gap: 25px;
+    gap: 40px;
 }
 
 nav a {
     text-decoration: none;
     color: #0B1F3A;
-    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 1px;
 }
 
 /* HERO */
@@ -44,19 +51,24 @@ nav a {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 90px;
+    margin-top: 100px;
 }
 
 .overlay {
-    background: rgba(11,31,58,0.7);
+    background: rgba(11,31,58,0.75);
     color: white;
-    padding: 40px;
+    padding: 60px;
     text-align: center;
+}
+
+.overlay h1 {
+    font-size: 40px;
+    letter-spacing: 2px;
 }
 
 .btn {
     background: #C9A646;
-    padding: 15px 25px;
+    padding: 15px 30px;
     color: black;
     text-decoration: none;
     display: inline-block;
@@ -67,14 +79,14 @@ nav a {
 .numbers {
     display: flex;
     justify-content: space-around;
-    padding: 60px;
+    padding: 80px;
     background: #0B1F3A;
     color: white;
     text-align: center;
 }
 
 .services {
-    padding: 60px;
+    padding: 80px;
     text-align: center;
 }
 
@@ -85,11 +97,11 @@ nav a {
 }
 
 .card {
-    width: 250px;
-    margin: 15px;
-    padding: 30px;
+    width: 260px;
+    margin: 20px;
+    padding: 40px;
     background: #f5f5f5;
-    box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
 }
 
 /* FOOTER */
@@ -97,7 +109,7 @@ nav a {
     background: #0B1F3A;
     color: white;
     text-align: center;
-    padding: 30px;
+    padding: 40px;
 }
 
 /* WHATSAPP */
@@ -110,37 +122,42 @@ nav a {
     padding: 15px 20px;
     border-radius: 50px;
     text-decoration: none;
-    font-weight: bold;
 }
 
 /* MENU HAMBURGUESA */
 .menu-toggle {
     display: none;
-    font-size: 30px;
+    font-size: 28px;
     cursor: pointer;
+    justify-self: end;
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
 
-    .menu-toggle {
-        display: block;
+    .nav-container {
+        grid-template-columns: 1fr 1fr;
     }
 
     nav {
         display: none;
-        flex-direction: column;
         position: absolute;
-        top: 80px;
+        top: 90px;
         right: 0;
         background: white;
-        width: 200px;
+        flex-direction: column;
+        width: 220px;
         box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+        padding: 20px;
     }
 
     nav a {
-        padding: 15px;
+        padding: 10px 0;
         border-bottom: 1px solid #eee;
+    }
+
+    .menu-toggle {
+        display: block;
     }
 
     .numbers {
@@ -152,8 +169,7 @@ nav a {
         align-items: center;
     }
 
-    .hero h1 {
+    .overlay h1 {
         font-size: 28px;
-        text-align: center;
     }
 }
