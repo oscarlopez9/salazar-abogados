@@ -1,15 +1,22 @@
+/* ===== GENERAL ===== */
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     color: #0B1F3A;
-    cursor: url('balanza.png'), auto;
 }
 
 h1, h2, h3 {
     font-family: 'Playfair Display', serif;
 }
 
-/* HEADER */
+section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 80px 20px;
+    box-sizing: border-box;
+}
+
+/* ===== HEADER ===== */
 .header {
     width: 100%;
     background: white;
@@ -23,11 +30,11 @@ h1, h2, h3 {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
-    padding: 20px 60px;
+    padding: 15px 40px;
 }
 
 .logo {
-    height: 60px;
+    height: 55px;
 }
 
 .logo-container {
@@ -37,17 +44,17 @@ h1, h2, h3 {
 nav {
     justify-self: center;
     display: flex;
-    gap: 40px;
+    gap: 35px;
 }
 
 nav a {
     text-decoration: none;
     color: #0B1F3A;
-    font-size: 16px;
+    font-size: 15px;
     letter-spacing: 1px;
 }
 
-/* HERO */
+/* ===== HERO ===== */
 .hero {
     height: 100vh;
     background: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f');
@@ -56,42 +63,40 @@ nav a {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 90px;
+    text-align: center;
 }
 
 .overlay {
     background: rgba(11,31,58,0.75);
     color: white;
-    padding: 60px;
-    text-align: center;
+    padding: 50px 30px;
+    max-width: 800px;
 }
 
 .overlay h1 {
-    font-size: 40px;
-    letter-spacing: 2px;
+    font-size: 38px;
 }
 
 .btn {
     background: #C9A646;
-    padding: 15px 30px;
+    padding: 14px 28px;
     color: black;
     text-decoration: none;
     display: inline-block;
     margin-top: 20px;
 }
 
-/* SECCIONES */
+/* ===== SECCIONES ===== */
 .numbers {
     display: flex;
     justify-content: space-around;
-    padding: 80px;
     background: #0B1F3A;
     color: white;
     text-align: center;
 }
 
 .services {
-    padding: 80px;
     text-align: center;
 }
 
@@ -103,33 +108,103 @@ nav a {
 
 .card {
     width: 260px;
-    margin: 20px;
-    padding: 40px;
+    margin: 15px;
+    padding: 30px;
     background: #f5f5f5;
     border: 1px solid #eee;
 }
 
-/* FOOTER */
+.valores, .elegirnos {
+    text-align: center;
+}
+
+.valores-container, .elegirnos-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.valor, .elegir {
+    width: 220px;
+    margin: 15px;
+}
+
+/* ===== CONTACTO ===== */
+.contacto {
+    margin-top: 100px;
+}
+
+.contacto-container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.contacto-info {
+    width: 280px;
+    font-size: 17px;
+}
+
+.contacto-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contacto-form input,
+.contacto-form textarea {
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+}
+
+.contacto-form textarea {
+    height: 160px;
+    resize: none;
+}
+
+/* ===== FOOTER ===== */
 .footer {
     background: #0B1F3A;
     color: white;
-    text-align: center;
-    padding: 40px;
+    padding-top: 50px;
 }
 
-/* WHATSAPP */
+.footer-container {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    padding: 30px 20px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.footer-col {
+    width: 260px;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* ===== WHATSAPP ===== */
 .whatsapp {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 18px;
+    right: 18px;
     background: #25D366;
     color: white;
-    padding: 15px 20px;
+    padding: 14px 18px;
     border-radius: 50px;
     text-decoration: none;
 }
 
-/* ANIMACIONES */
+/* ===== ANIMACIONES ===== */
 .reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -141,16 +216,20 @@ nav a {
     transform: translateY(0);
 }
 
-/* MENU HAMBURGUESA */
+/* ===== MENU HAMBURGUESA ===== */
 .menu-toggle {
     display: none;
-    font-size: 28px;
+    font-size: 26px;
     cursor: pointer;
     justify-self: end;
 }
 
-/* RESPONSIVE */
+/* ===== RESPONSIVE MOVIL ===== */
 @media (max-width: 768px) {
+
+    section {
+        padding: 50px 20px;
+    }
 
     .nav-container {
         grid-template-columns: 1fr 1fr;
@@ -160,11 +239,11 @@ nav a {
     nav {
         display: none;
         position: absolute;
-        top: 80px;
-        right: 0;
+        top: 75px;
+        right: 10px;
         background: white;
         flex-direction: column;
-        width: 220px;
+        width: 200px;
         box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
         padding: 20px;
     }
@@ -178,28 +257,9 @@ nav a {
         display: block;
     }
 
-    .numbers {
-        flex-direction: column;
-    }
-
-    .cards {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .overlay h1 {
-        font-size: 28px;
-    }
-
     .hero {
-        height: 70vh;
-    }
-}
-/* AJUSTES MOVIL FINOS */
-@media (max-width: 768px) {
-
-    body {
-        font-size: 14px;
+        height: 65vh;
+        margin-top: 80px;
     }
 
     .overlay {
@@ -207,180 +267,29 @@ nav a {
     }
 
     .overlay h1 {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     .numbers {
-        padding: 40px 20px;
+        flex-direction: column;
+        gap: 20px;
     }
 
-    .services {
-        padding: 40px 20px;
+    .cards {
+        flex-direction: column;
+        align-items: center;
     }
 
     .card {
         width: 90%;
-        padding: 25px;
-    }
-
-    .footer {
-        padding: 30px 20px;
-    }
-}
-/* FOOTER PROFESIONAL */
-.footer {
-    background: #0B1F3A;
-    color: white;
-    padding-top: 60px;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-around;
-    padding: 40px 10%;
-    flex-wrap: wrap;
-}
-
-.footer-col {
-    width: 300px;
-    margin: 20px;
-}
-
-.footer-col h3 {
-    margin-bottom: 20px;
-}
-
-.footer-bottom {
-    text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.2);
-    padding: 20px;
-    margin-top: 20px;
-}
-
-/* RESPONSIVE FOOTER */
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-}
-/* CONTACTO */
-.contacto {
-    margin-top: 120px;
-    padding: 60px 10%;
-}
-
-.contacto h1 {
-    font-size: 36px;
-    margin-bottom: 30px;
-}
-
-.contacto-container {
-    display: flex;
-    gap: 50px;
-    flex-wrap: wrap;
-}
-
-.contacto-info {
-    width: 300px;
-    font-size: 18px;
-}
-
-.contacto-form {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.contacto-form input,
-.contacto-form textarea {
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-}
-
-.contacto-form textarea {
-    height: 150px;
-    resize: none;
-}
-
-/* RESPONSIVE CONTACTO */
-@media (max-width: 768px) {
-    .contacto {
-        padding: 40px 20px;
     }
 
     .contacto-container {
         flex-direction: column;
     }
-}
-/* VALORES */
-.valores {
-    padding: 80px 10%;
-    background: #f9f9f9;
-    text-align: center;
-}
 
-.valores h2 {
-    font-size: 32px;
-    margin-bottom: 40px;
-}
-
-.valores-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.valor {
-    width: 220px;
-    margin: 20px;
-}
-
-.valor h3 {
-    margin-bottom: 10px;
-}
-
-/* RESPONSIVE VALORES */
-@media (max-width: 768px) {
-    .valores-container {
+    .footer-container {
         flex-direction: column;
-        align-items: center;
-    }
-}
-/* ELEGIRNOS */
-.elegirnos {
-    padding: 80px 10%;
-    text-align: center;
-}
-
-.elegirnos h2 {
-    font-size: 32px;
-    margin-bottom: 40px;
-}
-
-.elegirnos-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.elegir {
-    width: 220px;
-    margin: 20px;
-}
-
-.elegir h3 {
-    margin-bottom: 10px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .elegirnos-container {
-        flex-direction: column;
-        align-items: center;
+        gap: 20px;
     }
 }
