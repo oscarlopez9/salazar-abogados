@@ -1,3 +1,4 @@
+// MENU MOVIL
 function toggleMenu() {
     var menu = document.getElementById("menu");
     if (menu.style.display === "flex") {
@@ -7,8 +8,8 @@ function toggleMenu() {
     }
 }
 
-/* ANIMACION SCROLL */
-function reveal() {
+// ANIMACION AL HACER SCROLL
+window.addEventListener("scroll", function() {
     var reveals = document.querySelectorAll(".reveal");
 
     for (var i = 0; i < reveals.length; i++) {
@@ -20,64 +21,131 @@ function reveal() {
             reveals[i].classList.add("active");
         }
     }
-}
-
-window.addEventListener("scroll", reveal);
-
-/* EFECTO CURSOR */
-document.addEventListener("mousemove", function(e) {
-    const trail = document.createElement("div");
-    trail.style.position = "fixed";
-    trail.style.left = e.clientX + "px";
-    trail.style.top = e.clientY + "px";
-    trail.style.width = "12px";
-    trail.style.height = "12px";
-    trail.style.background = "rgba(201,166,70,0.7)";
-    trail.style.borderRadius = "50%";
-    trail.style.pointerEvents = "none";
-    trail.style.transform = "translate(-50%, -50%)";
-    trail.style.zIndex = "9999";
-
-    document.body.appendChild(trail);
-
-    setTimeout(() => {
-        trail.style.opacity = "0";
-        trail.style.transform = "translate(-50%, -50%) scale(0.5)";
-        trail.style.transition = "all 0.5s ease";
-    }, 10);
-
-    setTimeout(() => {
-        trail.remove();
-    }, 500);
 });
 
-/* NUMEROS ANIMADOS */
+// CONTADOR NUMEROS
 const counters = document.querySelectorAll('.counter');
-const speed = 200;
 
-const animateCounters = () => {
-    counters.forEach(counter => {
+counters.forEach(counter => {
+    counter.innerText = '0';
+
+    const updateCounter = () => {
         const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
+        const c = +counter.innerText;
 
-        const increment = target / speed;
+        const increment = target / 200;
 
-        if (count < target) {
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(animateCounters, 20);
+        if (c < target) {
+            counter.innerText = `${Math.ceil(c + increment)}`;
+            setTimeout(updateCounter, 10);
         } else {
             counter.innerText = target;
         }
-    });
-};
+    };
 
-/* ACTIVAR CUANDO APARECE EN PANTALLA */
-window.addEventListener("scroll", function() {
-    const section = document.querySelector(".numbers");
-    const position = section.getBoundingClientRect().top;
-    const screenPosition = window.innerHeight;
-
-    if (position < screenPosition) {
-        animateCounters();
-    }
+    updateCounter();
 });
+
+// ===== EFECTO GEOMETRICO =====
+const canvas = document.createElement("canvas");
+document.body.appendChild(canvas);
+canvas.style.position = "fixed";
+canvas.style.top = "0";
+canvas.style.left = "0";
+canvas.style.zIndex = "-1";
+
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+let mouse = { x: null, y: null };
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+window.addEventListener("mousemove", function(e) {
+    mouse.x = e.x;
+    mouse.y = e.y;
+});
+
+class Particle {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = 2;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+    }
+
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+    }
+
+    draw() {
+        ctx.fillStyle = "#C9A646";
+        ctx.fillRect(this.x, this.y, this.size, this.size);
+    }
+}
+
+function initParticles() {
+    particles = [];
+    for (let i = 0; i < 80; i++) {
+        particles.push(new Particle(Math.random() * canvas.width, Math.random() * canvas.height));
+    }
+}
+
+initParticles();
+
+function connectParticles() {
+    for (let a = 0; a < particles.length; a++) {
+        for (let b = a; b < particles.length; b++) {
+            let dx = particles[a].x - particles[b].x;
+            let dy = particles[a].y - particles[b].y;
+            let distance = dx * dx + dy * dy;
+
+            if (distance < 10000) {
+                ctx.strokeStyle = "rgba(201,166,70,0.2)";
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(particles[a].x, particles[a].y);
+                ctx.lineTo(particles[b].x, particles[b].y);
+                ctx.stroke();
+            }
+        }
+
+        // LINEAS AL CURSOR
+        let dx = particles[a].x - mouse.x;
+        let dy = particles[a].y - mouse.y;
+        let distance = dx * dx + dy * dy;
+
+        if (distance < 15000) {
+            ctx.strokeStyle = "rgba(201,166,70,0.5)";
+            ctx.beginPath();
+            ctx.moveTo(particles[a].x, particles[a].y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.stroke();
+        }
+    }
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+    }
+
+    connectParticles();
+    requestAnimationFrame(animate);
+}
+
+animate();
