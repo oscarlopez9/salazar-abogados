@@ -195,3 +195,35 @@ nav a {
         height: 70vh;
     }
 }
+/* AJUSTES MOVIL FINOS */
+@media (max-width: 768px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    .overlay {
+        padding: 30px 20px;
+    }
+
+    .overlay h1 {
+        font-size: 24px;
+    }
+
+    .numbers {
+        padding: 40px 20px;
+    }
+
+    .services {
+        padding: 40px 20px;
+    }
+
+    .card {
+        width: 90%;
+        padding: 25px;
+    }
+
+    .footer {
+        padding: 30px 20px;
+    }
+}
