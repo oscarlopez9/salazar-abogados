@@ -8,16 +8,23 @@
 <body>
 
 <header class="header">
-    <img src="logo.png" class="logo">
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="nosotros.html">Nosotros</a>
-        <a href="servicios.html">Soluciones</a>
-        <a href="equipo.html">Equipo</a>
-        <a href="contacto.html">Contacto</a>
-    </nav>
-</header>
+    <div class="nav-container">
+        <img src="logo.png" class="logo">
 
+        <div class="menu-toggle" onclick="toggleMenu()">
+            ☰
+        </div>
+
+        <nav id="menu">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="servicios.html">Soluciones</a>
+            <a href="equipo.html">Equipo</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </div>
+</header>
 <section style="margin-top:120px; padding:60px;">
     <h1>Nuestra Firma</h1>
     <p>
